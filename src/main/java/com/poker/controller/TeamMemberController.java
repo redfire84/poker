@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.poker.dao.ScrumMasterDao;
-import com.poker.domain.ScrumMaster;
+import com.poker.dao.TeamMemberDao;
+import com.poker.domain.TeamMember;
 
 @RestController
-@RequestMapping("/api/scrummaster")
-public class ScrumMasterController {
+@RequestMapping("/api/teammember")
+public class TeamMemberController {
 
 	@Autowired
-	private ScrumMasterDao scrumMasterDao;
+	private TeamMemberDao teamMemberDao;
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public ScrumMaster create(@RequestBody ScrumMaster scrumMaster) {
-		return scrumMasterDao.save(scrumMaster);
+	public TeamMember create(@RequestBody TeamMember teamMember) {
+		return teamMemberDao.save(teamMember);
 	}
 }

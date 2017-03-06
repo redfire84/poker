@@ -1,10 +1,8 @@
 (function(){
 	var app = angular.module('app');
 	
-	var NavController = function($scope, $location) {
-		$scope.isActive = function(path) {
-			return path === $location.path();
-		}
+	var NavController = function($scope, $log, session) {
+		$scope.session = session;
 	};
 	
 	app.controller('NavController', NavController);

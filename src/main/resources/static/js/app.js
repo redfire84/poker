@@ -9,9 +9,9 @@
 				templateUrl: '/html/play.html'
 			})
 			.when('/scrummaster', {
-				templateUrl: '/html/scrummaster/main.html'
+				templateUrl: '/html/scrummaster/main.html',
 			})
-			.when('/scrummaster/:smid', {
+			.when('/scrummaster/:smid/play', {
 				templateUrl: '/html/scrummaster/play.html'
 			})
 			.when('/teammember', {
@@ -26,6 +26,12 @@
 		
 		// remove # from uri
 		$locationProvider.html5Mode(true);
+	});
+	
+	app.factory('session', function() {
+		return {
+			session: {}
+		};
 	});
 	
 }());

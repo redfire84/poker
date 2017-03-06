@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" ng-controller="ScrumMasterController">
 	<h3>Scrum Master</h3>
 	<hr>
-	<form class="form-horizontal">
+	<form class="form-horizontal" ng-submit="createScrumMaster()">
 		<div class="form-group">
 			<label for="inputName" class="col-md-offset-2 col-md-2 control-label">Name</label>
 			<div class="col-md-4">
-				<input type="text" required="required" class="form-control" id="inputName" placeholder="Scrum Master">
+				<input type="text" required="required" class="form-control" id="inputName" ng-model="name" placeholder="Scrum Master">
 			</div>
 		</div>
 		<div class="form-group">

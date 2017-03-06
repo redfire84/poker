@@ -12,5 +12,5 @@ public abstract class BaseObject {
 
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date modDate;
+	private Date modDate = new Date();
 }

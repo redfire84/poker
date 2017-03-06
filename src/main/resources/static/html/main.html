@@ -18,17 +18,19 @@
 <script type="text/javascript" src="/js/vendor/ng-stomp/0.3.0/ng-stomp.min.js"></script>
 <script type="text/javascript" src="/js/app.js"></script>
 <script type="text/javascript" src="/js/nav.js"></script>
+<script type="text/javascript" src="/js/scrummaster/main.js"></script>
+<script type="text/javascript" src="/js/teammember/main.js"></script>
 
 <base href="/">
 
 <body ng-app="app">
-	<header ng-controller="NavController">
+	<header  ng-controller="NavController">
 		<nav class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#">Poker</a>
 				</div>
-				<p class="navbar-text navbar-right">Hi, Team Member (Session # 12345)</p>
+				<p class="navbar-text navbar-right" ng-show="session.userName !== undefined">Hi, {{session.userName}} (SM # {{session.smId}})</p>
 			</div>
 		</nav>
 	</header>
