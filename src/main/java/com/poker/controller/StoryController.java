@@ -7,24 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.poker.dao.TeamMemberDao;
-import com.poker.domain.TeamMember;
+import com.poker.dao.StoryDao;
+import com.poker.domain.Story;
 
 @RestController
-@RequestMapping("/api/teammember")
-public class TeamMemberController {
+@RequestMapping("/api/story")
+public class StoryController {
 
 	@Autowired
-	private TeamMemberDao teamMemberDao;
+	private StoryDao storyDao;
 	
 	@Autowired
 	private SimpMessagingTemplate simpMessagingTemplate;
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public TeamMember create(@RequestBody TeamMember teamMember) {
-		TeamMember tm = teamMemberDao.save(teamMember);
+	public Story create(@RequestBody Story story) {
+		Story s = storyDao.save(story);
 		
-		simpMessagingTemplate.convertAndSend("/topic/tm/join", tm);
-		return tm;
+		simpMessagingTemplate.convertAndSend("/topic/sm/story", s);
+		return s;
 	}
 }
