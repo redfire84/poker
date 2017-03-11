@@ -5,6 +5,7 @@
 		
 		$scope.teamMembers = [];
 		$scope.storystarted = false;
+		$scope.story = null;
 		
 		(function init() {
             $stomp.connect("/ws")
@@ -36,6 +37,10 @@
 			var subscription = null;
 			$http.post('/api/story/create', story)
 				.then(function(response) {
+					$timeout(function() {
+    					$scope.story = response.data;
+    				});
+					
             		subscription = $stomp.subscribe('/topic/tm/storypoint', function(data) {
             			if (data.scrumMaster.id == $routeParams.smid) {
             				$timeout(function() {

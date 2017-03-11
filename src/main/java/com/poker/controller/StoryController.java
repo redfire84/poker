@@ -1,5 +1,7 @@
 package com.poker.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +23,7 @@ public class StoryController {
 	private SimpMessagingTemplate simpMessagingTemplate;
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public Story create(@RequestBody Story story) {
+	public Story create(@RequestBody @Valid Story story) {
 		Story s = storyDao.save(story);
 		
 		simpMessagingTemplate.convertAndSend("/topic/sm/story", s);

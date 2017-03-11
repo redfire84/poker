@@ -1,5 +1,7 @@
 package com.poker.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,7 @@ public class ScrumMasterController {
 	private ScrumMasterDao scrumMasterDao;
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public ScrumMaster create(@RequestBody ScrumMaster scrumMaster) {
+	public ScrumMaster create(@RequestBody @Valid ScrumMaster scrumMaster) {
 		return scrumMasterDao.save(scrumMaster);
 	}
 }

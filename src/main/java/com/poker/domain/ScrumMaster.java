@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class ScrumMaster extends BaseObject {
@@ -14,7 +15,8 @@ public class ScrumMaster extends BaseObject {
 	private long id;
 	
 	@NotNull
-	@Column(nullable = false)
+	@Column(nullable = false, length = 15)
+	@Size(min = 1, max = 15)
 	private String name;
 
 	public long getId() {

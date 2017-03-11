@@ -3,8 +3,9 @@
 	<hr>
 	<div class="row">
 		<div class="col-md-offset-5 col-md-2">
-			<button class="btn btn-success btn-block" title="Start" ng-show="!storystarted" ng-click="startStory()"><i class="fa fa-hourglass-start"></i></button>
-			<button class="btn btn-default disabled btn-block" title="In progress..." ng-show="storystarted"><i class="fa fa-hourglass-half fa-pulse"></i></button>
+			<button class="btn btn-success disabled btn-block" title="Waiting..." ng-show="!storystarted && teamMembers.length == 0"><i class="fa fa-hourglass-start"></i></button>
+			<button class="btn btn-success btn-block" title="Start the game" ng-show="!storystarted && teamMembers.length > 0" ng-click="startStory()"><i class="fa fa-hourglass-start"></i></button>
+			<button class="btn btn-default disabled btn-block" title="Play in progress..." ng-show="storystarted"><i class="fa fa-hourglass-half fa-pulse"></i></button>
 		</div>
 	</div>
 	<div class="row"><div class="col-md-12">&nbsp;</div></div>
@@ -12,12 +13,17 @@
 		<div class="col-md-offset-4 col-md-4">
 			<ul class="list-group">
 				<li class="list-group-item">
-					<strong>Team Members</strong>
+					<span><strong>Team Members</strong></span><span class="badge" ng-show="story">Story # {{story.id}}</span>
 				</li>
 	  			<li class="list-group-item" ng-repeat="tm in teamMembers">
-	    			<span class="badge" ng-show="tm.storyPoint">{{tm.storyPoint.point}}</span>
+	  				<span class="badge alert-success" ng-show="tm.storyPoint && storystarted && tm.storyPoint.point"><i class="fa fa-check-square-o"></i></span>
+	  				<span class="badge alert-danger" ng-show="tm.storyPoint && !storystarted && !tm.storyPoint.point"><i class="fa fa-exclamation-triangle"></i></span>
+	    			<span class="badge alert-info" ng-show="tm.storyPoint && !storystarted">{{tm.storyPoint.point}}</span>
 	    			{{tm.name}}
 	  			</li>
+	  			<li class="list-group-item" ng-show="teamMembers.length == 0">
+					No one yet!
+				</li>
 			</ul>
 		</div>
 	</div>

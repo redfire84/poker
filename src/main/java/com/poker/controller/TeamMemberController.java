@@ -1,5 +1,7 @@
 package com.poker.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +23,7 @@ public class TeamMemberController {
 	private SimpMessagingTemplate simpMessagingTemplate;
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public TeamMember create(@RequestBody TeamMember teamMember) {
+	public TeamMember create(@RequestBody @Valid TeamMember teamMember) {
 		TeamMember tm = teamMemberDao.save(teamMember);
 		
 		simpMessagingTemplate.convertAndSend("/topic/tm/join", tm);

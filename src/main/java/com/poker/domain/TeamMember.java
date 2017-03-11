@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class TeamMember extends BaseObject {
@@ -15,7 +16,8 @@ public class TeamMember extends BaseObject {
 	private long id;
 	
 	@NotNull
-	@Column(nullable = false)
+	@Column(nullable = false, length = 15)
+	@Size(min = 1, max = 15)
 	private String name;
 	
 	@OneToOne
