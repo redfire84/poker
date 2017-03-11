@@ -16,8 +16,8 @@
 					<span><strong>Team Members</strong></span><span class="badge" ng-show="story">Story # {{story.id}}</span>
 				</li>
 	  			<li class="list-group-item" ng-repeat="tm in teamMembers">
-	  				<span class="badge alert-success" ng-show="tm.storyPoint && storystarted && tm.storyPoint.point"><i class="fa fa-check-square-o"></i></span>
-	  				<span class="badge alert-danger" ng-show="tm.storyPoint && !storystarted && !tm.storyPoint.point"><i class="fa fa-exclamation-triangle"></i></span>
+	  				<span class="badge alert-success" ng-show="tm.storyPoint && storystarted && tm.storyPoint.point != null"><i class="fa fa-check-square-o"></i></span>
+	  				<span class="badge alert-danger" ng-show="tm.storyPoint && !storystarted && tm.storyPoint.point == null"><i class="fa fa-exclamation-triangle"></i></span>
 	    			<span class="badge alert-info" ng-show="tm.storyPoint && !storystarted">{{tm.storyPoint.point}}</span>
 	    			{{tm.name}}
 	  			</li>

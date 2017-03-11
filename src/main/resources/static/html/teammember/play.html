@@ -8,30 +8,30 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-6"><p><strong>Story # {{story.id ? story.id : '--'}}</strong></p></div>
-				<div class="col-xs-6"><p class="text-right"><strong>point # {{story.point ? story.point : '--'}}</strong></p></div>
+				<div class="col-xs-6"><p class="text-right"><strong>point # {{story.point != null ? story.point : '--'}}</strong></p></div>
 			</div>
 			<div class="well">
 				<div class="row">
-					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !story, 'btn-default': story && story.point != 1, 'btn-primary': story && story.point == 1}" ng-click="storyPoint(1)">1</button></div>
-					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !story, 'btn-default': story && story.point != 2, 'btn-primary': story && story.point == 2}" ng-click="storyPoint(2)">2</button></div>
-					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !story, 'btn-default': story && story.point != 3, 'btn-primary': story && story.point == 3}" ng-click="storyPoint(3)">3</button></div>
+					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !playing, 'btn-default': playing && story.point != 1, 'btn-primary': playing && story.point == 1}" ng-click="storyPoint(1)">1</button></div>
+					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !playing, 'btn-default': playing && story.point != 2, 'btn-primary': playing && story.point == 2}" ng-click="storyPoint(2)">2</button></div>
+					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !playing, 'btn-default': playing && story.point != 3, 'btn-primary': playing && story.point == 3}" ng-click="storyPoint(3)">3</button></div>
 				</div>
 				<div class="row"><div class="col-xs-12">&nbsp;</div></div>
 				<div class="row">
-					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !story, 'btn-default': story && story.point != 4, 'btn-primary': story && story.point == 4}" ng-click="storyPoint(4)">4</button></div>
-					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !story, 'btn-default': story && story.point != 5, 'btn-primary': story && story.point == 5}" ng-click="storyPoint(5)">5</button></div>
-					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !story, 'btn-default': story && story.point != 6, 'btn-primary': story && story.point == 6}" ng-click="storyPoint(6)">6</button></div>
+					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !playing, 'btn-default': playing && story.point != 4, 'btn-primary': playing && story.point == 4}" ng-click="storyPoint(4)">4</button></div>
+					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !playing, 'btn-default': playing && story.point != 5, 'btn-primary': playing && story.point == 5}" ng-click="storyPoint(5)">5</button></div>
+					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !playing, 'btn-default': playing && story.point != 6, 'btn-primary': playing && story.point == 6}" ng-click="storyPoint(6)">6</button></div>
 				</div>
 				<div class="row"><div class="col-xs-12">&nbsp;</div></div>
 				<div class="row">
-					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !story, 'btn-default': story && story.point != 7, 'btn-primary': story && story.point == 7}" ng-click="storyPoint(7)">7</button></div>
-					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !story, 'btn-default': story && story.point != 8, 'btn-primary': story && story.point == 8}" ng-click="storyPoint(8)">8</button></div>
-					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !story, 'btn-default': story && story.point != 9, 'btn-primary': story && story.point == 9}" ng-click="storyPoint(9)">9</button></div>
+					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !playing, 'btn-default': playing && story.point != 7, 'btn-primary': playing && story.point == 7}" ng-click="storyPoint(7)">7</button></div>
+					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !playing, 'btn-default': playing && story.point != 8, 'btn-primary': playing && story.point == 8}" ng-click="storyPoint(8)">8</button></div>
+					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !playing, 'btn-default': playing && story.point != 9, 'btn-primary': playing && story.point == 9}" ng-click="storyPoint(9)">9</button></div>
 				</div>
 				<div class="row"><div class="col-xs-12">&nbsp;</div></div>
 				<div class="row">
 					<div class="col-xs-4"></div>
-					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !story, 'btn-default': story && story.point != 0, 'btn-primary': story && story.point == 0}" ng-click="storyPoint(0)">0</button></div>
+					<div class="col-xs-4"><button class="btn btn-block" ng-class="{'disabled': !playing, 'btn-default': playing && story.point != 0, 'btn-primary': playing && story.point == 0}" ng-click="storyPoint(0)">0</button></div>
 					<div class="col-xs-4"></div>
 				</div>
 			</div>

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 @Entity
@@ -19,7 +20,8 @@ public class StoryPoint extends BaseObject {
 	@OneToOne
 	private TeamMember teamMember;
 	
-	@Min(1)
+	@Min(0)
+	@Max(9)
 	private Integer point;
 
 	public long getId() {
