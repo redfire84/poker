@@ -20,6 +20,11 @@
         })();
 		
 		$scope.startStory = function() {
+			// reset
+			for (var i=0; i<$scope.teamMembers.length; i++) {
+				$scope.teamMembers[i]['storyPoint'] = null;
+			}
+			
 			$scope.storystarted = true;
 			
 			story = {
@@ -28,15 +33,32 @@
 				}
 			};
 			
+			var subscription = null;
 			$http.post('/api/story/create', story)
 				.then(function(response) {
-					$interval(function() {
-						$scope.storystarted = false;
-					}, 10000);
+            		subscription = $stomp.subscribe('/topic/tm/storypoint', function(data) {
+            			if (data.scrumMaster.id == $routeParams.smid) {
+            				$timeout(function() {
+            					for (var i=0; i<$scope.teamMembers.length; i++) {
+            						if ($scope.teamMembers[i].id == data.teamMember.id) {
+            							$scope.teamMembers[i]['storyPoint'] = data;
+            						}
+            					}
+            				});
+            			}
+            		});
 					
 				}, function(response) {
 					$log.error(response)
 				});
+			
+			$timeout(function() {
+				if (subscription) {
+					subscription.unsubscribe();
+				}
+				
+				$scope.storystarted = false;
+			}, 10000);
 		};
 		
 	};

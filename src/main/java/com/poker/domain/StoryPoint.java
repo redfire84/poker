@@ -17,6 +17,8 @@ public class StoryPoint extends BaseObject {
 	
 	@OneToOne
 	private TeamMember teamMember;
+	
+	private Integer point;
 
 	public long getId() {
 		return id;
@@ -40,5 +42,13 @@ public class StoryPoint extends BaseObject {
 
 	public void setTeamMember(TeamMember teamMember) {
 		this.teamMember = teamMember;
+	}
+
+	public Integer getPoint() {
+		return point;
+	}
+
+	public void setPoint(Integer point) {
+		this.point = point;
 	}
 }
