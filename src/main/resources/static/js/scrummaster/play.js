@@ -76,7 +76,7 @@
 				}
 				
 				$scope.storystarted = false;
-			}, 10000);
+			}, 7000);
 		};
 		
 	};

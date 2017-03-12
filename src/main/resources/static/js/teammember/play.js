@@ -23,11 +23,14 @@
 				$timeout(function() {
 					$scope.story = data;
 					$scope.playing = true;
+					$scope.countdown = 5;
 				});
 				
-				/*var timer = $interval(function() {
-					
-				}, 1000);*/
+				var timer = $interval(function() {
+					$timeout(function() {
+						$scope.countdown --;
+					});
+				}, 1000);
 				
 				$timeout(function() {
 					
@@ -43,6 +46,7 @@
 					
 					$timeout(function() {
 						$scope.playing = false;
+						$interval.cancel(timer);
     				});
 					
 					$http.post('/api/storypoint/create', storyPoint)
