@@ -8,6 +8,19 @@
 		$scope.story = null;
 		
 		(function init() {
+			$http.get('/api/teammember/sm/' + $routeParams.smid + '/list')
+				.then(function(response) {
+					$timeout(function() {
+						if(response.data) {
+							for (var i=0; i<response.data.length; i++) {
+								$scope.teamMembers.push(response.data[i]);
+							}
+						}
+					});
+					
+				}, function(response) {
+					$log.error(response)
+				});
             $stomp.connect("/ws")
             	.then(function(frame) {
             		$stomp.subscribe('/topic/tm/join', function(data) {

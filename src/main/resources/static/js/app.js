@@ -25,7 +25,7 @@
 			});
 		
 		// remove # from uri
-		$locationProvider.html5Mode(true);
+		//$locationProvider.html5Mode(true);
 	});
 	
 	app.factory('session', function() {

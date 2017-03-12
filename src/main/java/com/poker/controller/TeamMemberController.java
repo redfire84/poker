@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,11 @@ public class TeamMemberController {
 	
 	@Autowired
 	private SimpMessagingTemplate simpMessagingTemplate;
+	
+	@RequestMapping(value = "sm/{smid}/list", method = RequestMethod.GET)
+	public Iterable<TeamMember> listByScrumMasterId(@PathVariable("smid") long smid) {
+		return teamMemberDao.findAllByScrumMasterId(smid);
+	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public TeamMember create(@RequestBody @Valid TeamMember teamMember) {
