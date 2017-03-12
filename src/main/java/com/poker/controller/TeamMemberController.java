@@ -35,4 +35,9 @@ public class TeamMemberController {
 		simpMessagingTemplate.convertAndSend("/topic/tm/join", tm);
 		return tm;
 	}
+	
+	@RequestMapping(value = "/{tmid}/scrummaster/{smid}", method = RequestMethod.GET)
+	public TeamMember find(@PathVariable("smid") long smid, @PathVariable("tmid") long tmid) {
+		return teamMemberDao.findOneByIdAndScrumMasterId(tmid, smid);
+	}
 }

@@ -8,6 +8,15 @@
 		$scope.countdown = 0;
 		
 		(function init() {
+			$http.get('/api/teammember/' + $routeParams.tmid + '/scrummaster/' + $routeParams.smid)
+				.then(function(response) {
+					session.userName = response.data.name,
+					session.smId = response.data.scrumMaster.id
+					
+				}, function(response) {
+					$log.error(response)
+				});
+			
             $stomp.connect("/ws")
             	.then(function(frame) {
             		$stomp.subscribe('/topic/sm/story', function(data) {
@@ -34,27 +43,12 @@
 				
 				$timeout(function() {
 					
-					storyPoint = {
-						scrumMaster: {
-							id: $routeParams.smid
-						},
-						teamMember: {
-							id: $routeParams.tmid
-						},
-						point: $scope.story['point']
-					};
-					
 					$timeout(function() {
 						$scope.playing = false;
 						$interval.cancel(timer);
     				});
 					
-					$http.post('/api/storypoint/create', storyPoint)
-    					.then(function(response) {
-    						// points posted
-    					}, function(response) {
-    						$log.error(response)
-    					});
+					_createStoryPoint($scope.story['point']);
 				}, 5000);
 			}
 		};
@@ -62,7 +56,27 @@
 		$scope.storyPoint = function(point) {
 			if ($scope.playing) {
 				$scope.story['point'] = point;
+				_createStoryPoint(point);
 			}
+		};
+		
+		_createStoryPoint = function(point) {
+			storyPoint = {
+				scrumMaster: {
+					id: $routeParams.smid
+				},
+				teamMember: {
+					id: $routeParams.tmid
+				},
+				point: point
+			};
+			
+			$http.post('/api/storypoint/create', storyPoint)
+				.then(function(response) {
+					// points posted
+				}, function(response) {
+					$log.error(response)
+				});
 		};
 	};
 	

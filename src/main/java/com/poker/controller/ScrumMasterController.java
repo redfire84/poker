@@ -3,6 +3,7 @@ package com.poker.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,5 +22,10 @@ public class ScrumMasterController {
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ScrumMaster create(@RequestBody @Valid ScrumMaster scrumMaster) {
 		return scrumMasterDao.save(scrumMaster);
+	}
+	
+	@RequestMapping(value = "/{smid}", method = RequestMethod.GET)
+	public ScrumMaster find(@PathVariable("smid") long smid) {
+		return scrumMasterDao.findOne(smid);
 	}
 }
