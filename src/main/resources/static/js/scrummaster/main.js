@@ -10,8 +10,8 @@
 				
 			$http.post('/api/scrummaster/create', scrumMaster)
 				.then(function(response) {
-					session.userName = response.data.name,
-					session.smId = response.data.id
+					session.userName = response.data.name;
+					session.smId = response.data.id;
 					
 					$location.path('/scrummaster/' + response.data.id + '/play')
 					

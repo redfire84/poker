@@ -10,8 +10,8 @@
 		(function init() {
 			$http.get('/api/teammember/' + $routeParams.tmid + '/scrummaster/' + $routeParams.smid)
 				.then(function(response) {
-					session.userName = response.data.name,
-					session.smId = response.data.scrumMaster.id
+					session.userName = response.data.name;
+					session.smId = response.data.scrumMaster.id;
 					
 				}, function(response) {
 					$log.error(response)

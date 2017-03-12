@@ -13,8 +13,8 @@
 				
 			$http.post('/api/teammember/create', teamMember)
 				.then(function(response) {
-					session.userName = response.data.name,
-					session.smId = response.data.scrumMaster.id
+					session.userName = response.data.name;
+					session.smId = response.data.scrumMaster.id;
 					
 					$location.path('/scrummaster/' + response.data.scrumMaster.id + '/teammember/' + response.data.id + '/play')
 					
